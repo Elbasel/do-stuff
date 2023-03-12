@@ -1,3 +1,44 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+    /* --glow-color: rgb(28 25 23 / var(--tw-bg-opacity)); */
+    /* --glow-color: rgba(89, 180, 184, 0.512); */
+    /* --glow-color: white; */
+    --glow-color: rgb(125, 37, 37);
+    --glow-duration: 2s;
+    --slide-out-duration: 5s;
+}
+
+.slide-out {
+    animation: slide-out var(--slide-out-duration) cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+@keyframes slide-out {
+    to {
+        transform: translateY(300%);
+    }
+}
+
+
+
+.glow {
+    animation: glow var(--glow-duration) ease-in-out infinite alternate;
+
+}
+
+
+@keyframes glow {
+    0% {
+        box-shadow: 0 0 0 var(--glow-color);
+    }
+
+    50% {
+        box-shadow: 0 0 10px var(--glow-color);
+    }
+
+    100% {
+        box-shadow: 0 0 0 var(--glow-color);
+    }
+}

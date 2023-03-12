@@ -1,9 +1,11 @@
-interface ViewportSize {
-  width: number;
-  height: number;
+// utils/getViewableArea.ts
+export interface ViewportSize {
+  width: number | 'auto';
+  height: number | 'auto';
 }
 
-function getViewableArea(): ViewportSize {
+export function getViewableArea(): ViewportSize {
+  if (window == null) return { width: 'auto', height: 'auto' };
   const viewportWidth = window.innerWidth;
   const viewportHeight = window.innerHeight;
   const documentWidth = document.documentElement.clientWidth;
@@ -12,8 +14,3 @@ function getViewableArea(): ViewportSize {
   const height = Math.min(viewportHeight, documentHeight);
   return { width, height };
 }
-
-const viewableArea = getViewableArea();
-console.log(
-  `Current viewable area: ${viewableArea.width} x ${viewableArea.height}`
-);

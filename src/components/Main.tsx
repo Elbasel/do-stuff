@@ -1,7 +1,9 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { AiFillWechat } from 'react-icons/ai';
 
 import { classNames } from '../utils/classNames';
+import { ViewportSize } from '../utils/getViewableArea';
+import { useViewableArea } from '../hooks/useViewableArea';
 
 type Props = {};
 
@@ -9,14 +11,26 @@ const Main = (props: Props) => {
   const [command, setCommand] = useState('');
 
   const [clicked, setClicked] = useState(false);
+  const { viewableArea } = useViewableArea();
 
-  const mainInput = useRef(null);
+  const mainInput = useRef<HTMLInputElement>(null);
+
+  const focusMainInput = () => {
+    if (mainInput.current) {
+      mainInput.current.focus();
+    }
+  };
 
   let handleClick = () => {
     // only run once
     setClicked(true);
     handleClick = () => {};
   };
+
+  useEffect(() => {
+    console.log('viewableArea', viewableArea);
+    return () => {};
+  }, [viewableArea]);
 
   return (
     <main className="bg-zinc-900 text-green-400 h-[100vh] h-[100dvh] text-3xl py-8 px-2">
@@ -54,5 +68,3 @@ const Main = (props: Props) => {
     </main>
   );
 };
-
-export default Main;

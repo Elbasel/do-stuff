@@ -7,18 +7,21 @@ import Form from './Form';
 type Props = {};
 
 // styles for both the fake placeholder and the textarea
+// get the fake placeholder to be the same size as the textarea 
 const commonStyles =
   'absolute h-full px-4 py-4 outline-none w-[99%] rounded-lg -left-[10px] -top-[10px] overflow-hidden';
 
 export const Main = (props: Props) => {
-  // state
-  const [command, setCommand] = useState('');
-//   const [ready, setReady] = useState(false);
+  // ! state
+  const [inputValue, setCommand] = useState('');
   const [promptShown, setPromptShown] = useState(false);
 
+//   auto animate the fake placeholder
   const [parent, enableAnimations] = useAutoAnimate({});
 
+  // {width: number, height: number} 
   const viewableArea = useGetViewableArea();
+
 
   const mainInput = useRef<HTMLTextAreaElement>(null);
 
@@ -27,18 +30,16 @@ export const Main = (props: Props) => {
   };
 
   // event handlers
-
   const handleSubmit = () => {};
 
-  const handleBlur = () => {
+  const handleInputBlur = () => {
     if (mainInput.current?.value) return;
     setPromptShown(false);
   };
 
   let handleInputClick = () => {
-    // if (!ready) return;
-    // only run once
     setPromptShown(true);
+    // only run once
     handleInputClick = () => {};
   };
 
@@ -47,7 +48,6 @@ export const Main = (props: Props) => {
   }, [viewableArea]);
 
   useEffect(() => {
-    // setReady(true);
   }, []);
 
   return (
@@ -72,9 +72,9 @@ export const Main = (props: Props) => {
         <textarea
           ref={mainInput}
           style={{ resize: 'none' }}
-          onBlur={handleBlur}
+          onBlur={handleInputBlur}
           className={`${commonStyles} bg-zinc-800 border-0`}
-          value={command}
+          value={inputValue}
           onChange={(e) => setCommand(e.target.value)}
         />
       </div>

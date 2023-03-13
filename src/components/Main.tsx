@@ -6,6 +6,7 @@ import Form from './Form';
 
 type Props = {};
 
+// styles for both the fake placeholder and the textarea
 const commonStyles =
   'absolute h-full px-4 py-4 outline-none w-[99%] rounded-lg -left-[10px] -top-[10px] overflow-hidden';
 

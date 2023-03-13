@@ -13,7 +13,7 @@ const commonStyles =
 export const Main = (props: Props) => {
   // state
   const [command, setCommand] = useState('');
-  const [ready, setReady] = useState(false);
+//   const [ready, setReady] = useState(false);
   const [promptShown, setPromptShown] = useState(false);
 
   const [parent, enableAnimations] = useAutoAnimate({});
@@ -35,18 +35,20 @@ export const Main = (props: Props) => {
     setPromptShown(false);
   };
 
-  let handleClick = () => {
-    if (!ready) return;
+  let handleInputClick = () => {
+    // if (!ready) return;
     // only run once
     setPromptShown(true);
-    handleClick = () => {};
+    handleInputClick = () => {};
   };
 
   useEffect(() => {
     console.log('viewableArea', viewableArea);
-    setReady(true);
-    return () => {};
   }, [viewableArea]);
+
+  useEffect(() => {
+    // setReady(true);
+  }, []);
 
   return (
     <main className="bg-zinc-900 text-green-400 h-[100vh] h-[100dvh] text-3xl py-8 px-2 overflow-hidden">
@@ -57,7 +59,7 @@ export const Main = (props: Props) => {
       {/* input container */}
       <div
         ref={parent}
-        onClick={() => handleClick()}
+        onClick={() => handleInputClick()}
         className="glow mt-8 rounded-lg h-[100px] w-[87vw] mx-auto max-w-lg flex items-center relative overflow-hidden bg-gradient-to-r from-green-400 via-green-500 to-green-300"
       >
         {/* fake-placeholder */}

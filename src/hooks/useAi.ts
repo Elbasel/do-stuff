@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Configuration, OpenAIApi } from 'openai';
-import { getAiResult as apiGetAiResult} from '../pages/api/ai';
+import { getAiResult as apiGetAiResult } from '../pages/api/ai';
 
 type OpenAIError = {};
 
@@ -17,8 +17,8 @@ const useAi = (prompt: string) => {
 
     const getAiResult = async () => {
       const aiResult = await apiGetAiResult(prompt);
-    }
-    
+    };
+
     //     console.log(error);
     //   }
     //   const openaiError: OpenAIError = new OpenAIError({
@@ -29,7 +29,7 @@ const useAi = (prompt: string) => {
     //   setError(openaiError);
     //   console.log(openaiError);
     // }
-  }, []);
+  }, [prompt]);
 
   return { result, error };
 };

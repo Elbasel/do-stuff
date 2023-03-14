@@ -1,10 +1,13 @@
 import { useAutoAnimate } from '@formkit/auto-animate/react';
 import React, { useRef, useState } from 'react';
+import useAi from '../hooks/useAi';
 import { classNames } from '../utils/classNames';
 
-type Props = {};
+type Props = {
+  onSubmit: (value: string) => void;
+};
 
-export const HomeInput = (props: Props) => {
+export const HomeInput = ({ onSubmit }: Props) => {
   const [promptVisible, setPromptVisible] = useState(true);
   const [parent, enableAnimations] = useAutoAnimate({});
   const mainInput = useRef<HTMLInputElement>(null);
@@ -28,7 +31,11 @@ export const HomeInput = (props: Props) => {
     handleClick = () => {};
   };
 
-  const handleSubmit = () => {};
+  const handleSubmit = () => {
+    setInputValue('');
+    if (!inputValue) return;
+    onSubmit(inputValue);
+  };
 
   return (
     <div
@@ -44,6 +51,11 @@ export const HomeInput = (props: Props) => {
         <div className={`${commonStyles} z-10 pointer-events-none`}>{'>'}</div>
       )}
       <input
+        onKeyDown={(e) => {
+          if (e.key === 'Enter') {
+            handleSubmit();
+          }
+        }}
         ref={mainInput}
         onBlur={handleBlur}
         className={`${commonStyles} bg-zinc-800 border-0 resize-none`}

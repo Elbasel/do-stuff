@@ -1,4 +1,5 @@
 import React from 'react';
+import Header from '../components/Header';
 import TextArea from '../components/InputContainer';
 
 type Props = {};
@@ -6,6 +7,7 @@ type Props = {};
 const Home = (props: Props) => {
   return (
     <>
+      <Header />
       <TextArea />
     </>
   );

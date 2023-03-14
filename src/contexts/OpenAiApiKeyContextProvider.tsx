@@ -5,7 +5,9 @@ const OPENAI_API_KEY_NAME = 'openai_api_key';
 
 type Props = { children: React.ReactNode };
 
-export const OpenAiApiKeyContext = ({ children }: Props) => {
+export const OpenAiApiKeyContext = createContext({});
+
+export const OpenAiApiKeyContextProvider = ({ children }: Props) => {
   const getApiKeyFromStorage = (): { apiKey: string | null } => {
     return (
       { apiKey: `${secureLocalStorage.getItem(OPENAI_API_KEY_NAME)}` } ?? {
@@ -24,17 +26,11 @@ export const OpenAiApiKeyContext = ({ children }: Props) => {
     secureLocalStorage.setItem(OPENAI_API_KEY_NAME, apiKey);
   };
 
-  const OpenAiContext = createContext({
-    getApiKey,
-    setApiKey,
-    getApiKeyFromStorage,
-  });
-
   return (
-    <OpenAiContext.Provider
+    <OpenAiApiKeyContext.Provider
       value={{ getApiKey, setApiKey, getApiKeyFromStorage }}
     >
       {children}
-    </OpenAiContext.Provider>
+    </OpenAiApiKeyContext.Provider>
   );
 };

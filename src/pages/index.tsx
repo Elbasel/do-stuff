@@ -1,12 +1,12 @@
 import React from 'react';
-import InputContainer from '../components/InputContainer';
+import TextArea from '../components/InputContainer';
 
 type Props = {};
 
 const Home = (props: Props) => {
   return (
     <>
-      <InputContainer />
+      <TextArea />
     </>
   );
 };

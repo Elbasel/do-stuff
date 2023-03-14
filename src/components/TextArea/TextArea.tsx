@@ -4,7 +4,7 @@ import { classNames } from '../../utils/classNames';
 
 type Props = {};
 
-const TextArea = (props: Props) => {
+export const TextArea = (props: Props) => {
   const [promptVisible, setPromptVisible] = useState(true);
   const [parent, enableAnimations] = useAutoAnimate({});
   const mainInput = useRef<HTMLTextAreaElement>(null);
@@ -56,5 +56,3 @@ const TextArea = (props: Props) => {
 
 const commonStyles =
   'absolute h-full px-4 py-4 outline-none w-[99%] rounded-lg -left-[10px] -top-[10px] overflow-hidden';
-
-export default TextArea;

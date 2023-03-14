@@ -1,6 +1,6 @@
 import React from 'react';
-import Header from '../components/Header';
-import TextArea from '../components/InputContainer';
+import {Header} from '../components/Header';
+import {TextArea} from '../components/TextArea';
 
 type Props = {};
 

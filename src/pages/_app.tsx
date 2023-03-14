@@ -1,7 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
-import { Main } from '../components/Main';
-import OpenAiApiKeyContext from '../contexts/OpenAiApiKeyContext';
+import { Layout } from '../components/Layout';
+import {OpenAiApiKeyContext} from '../contexts/OpenAiApiKeyContext';
 import type { AppProps } from 'next/app';
 
 import '../globals.css';
@@ -16,9 +16,9 @@ export default function App({ Component, pageProps }: AppProps) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <OpenAiApiKeyContext>
-        <Main>
+        <Layout>
           <Component {...pageProps} />
-        </Main>
+        </Layout>
       </OpenAiApiKeyContext>
     </>
   );

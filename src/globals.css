@@ -3,40 +3,17 @@
 @tailwind utilities;
 
 :root {
-    --glow-color: rgba(255, 255, 255, 0.214);
-    /* --glow-duration: 10s ease-in; */
+    --glow-color: rgb(255, 255, 255);
 }
 
-
-.glow {
-    animation: glow var(--glow-duration) infinite;
-
-}
-
-
-@keyframes glow {
-    0% {
-        box-shadow: 0 0 0 var(--glow-color);
-    }
-
-    50% {
-        box-shadow: 0 0 5px var(--glow-color);
-    }
-
-    100% {
-        box-shadow: 0 0 0 var(--glow-color);
-    }
-}
-
-
-.glow {
+.animate-background {
     background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
     background-size: 400% 400%;
-    animation: glow 15s ease infinite;
+    animation: animate-background 15s ease infinite;
 
 }
 
-@keyframes glow {
+@keyframes animate-background {
     0% {
         background-position: 0% 50%;
     }

@@ -1,19 +1,19 @@
 import { useAutoAnimate } from '@formkit/auto-animate/react';
 import React, { useRef, useState } from 'react';
-import { classNames } from '../../utils/classNames';
+import { classNames } from '../utils/classNames';
 
 type Props = {};
 
-export const TextArea = (props: Props) => {
+export const HomeInput = (props: Props) => {
   const [promptVisible, setPromptVisible] = useState(true);
   const [parent, enableAnimations] = useAutoAnimate({});
-  const mainInput = useRef<HTMLTextAreaElement>(null);
+  const mainInput = useRef<HTMLInputElement>(null);
 
   // utility functions
   const focusMainInput = () => {
     mainInput.current?.focus();
   };
-  const [textAreaValue, setTextAreaValue] = useState('');
+  const [inputValue, setInputValue] = useState('');
 
   // handle events
   const handleBlur = () => {
@@ -43,12 +43,12 @@ export const TextArea = (props: Props) => {
       {promptVisible && (
         <div className={`${commonStyles} z-10 pointer-events-none`}>{'>'}</div>
       )}
-      <textarea
+      <input
         ref={mainInput}
         onBlur={handleBlur}
         className={`${commonStyles} bg-zinc-800 border-0 resize-none`}
-        value={textAreaValue}
-        onChange={(e) => setTextAreaValue(e.target.value)}
+        value={inputValue}
+        onChange={(e) => setInputValue(e.target.value)}
       />
     </div>
   );

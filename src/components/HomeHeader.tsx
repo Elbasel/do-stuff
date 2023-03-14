@@ -3,7 +3,7 @@ import { AiFillWechat } from 'react-icons/ai';
 
 type Props = {};
 
-export const Header = (props: Props) => {
+export const HomeHeader = (props: Props) => {
   return (
     <header className="flex justify-center gap-4">
       <AiFillWechat />

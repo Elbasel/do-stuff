@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
-import { Button } from '../Button/';
 import { MdError } from 'react-icons/md';
-import { FullScreenModal } from '../Modal/FullScreenModal';
+import { Modal } from './Modal';
+import { ApiKeyForm } from './ApiKeyForm';
+import { Button } from './Button';
 
 type Props = {};
 
 export const Nav = (props: Props) => {
-  const [modalOpen, setApiKeyModalOpen] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
 
   const handleModalOpen = () => {
-    setApiKeyModalOpen(true);
+    setModalOpen(true);
     console.log({ apiKeyModalOpen: modalOpen });
   };
 
@@ -31,11 +32,9 @@ export const Nav = (props: Props) => {
         open={apiKeyModalOpen}
         onClose={() => setApiKeyModalOpen(false)}
       /> */}
-      <FullScreenModal isOpen={modalOpen} onClose={() => {}}>
-        <div className="flex flex-col">
-          heyo
-        </div>
-      </FullScreenModal>
+      <Modal isOpen={modalOpen} slideFrom="bottom">
+        <ApiKeyForm fullscreen />
+      </Modal>
     </nav>
   );
 };

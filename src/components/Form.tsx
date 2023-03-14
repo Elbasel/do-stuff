@@ -7,12 +7,10 @@ type Props = {
   children?: React.ReactNode;
 };
 
-const Form = (props: Props) => {
+export const Form = (props: Props) => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     props.onSubmit();
   };
   return <form {...props} onSubmit={handleSubmit} />;
 };
-
-export default Form;

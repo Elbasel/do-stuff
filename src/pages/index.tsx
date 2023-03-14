@@ -1,14 +1,14 @@
 import React from 'react';
-import { Header } from '../components/Header';
-import { TextArea } from '../components/TextArea';
+import {  HomeInput } from '../components/HomeInput';
+import { HomeHeader } from '../components/HomeHeader';
 
 type Props = {};
 
 const Home = (props: Props) => {
   return (
     <>
-      <Header />
-      <TextArea />
+      <HomeHeader />
+      <HomeInput />
     </>
   );
 };

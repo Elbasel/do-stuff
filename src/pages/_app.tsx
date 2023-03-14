@@ -4,8 +4,8 @@ import { Layout } from '../components/Layout';
 import type { AppProps } from 'next/app';
 
 import '../globals.css';
-import { OpenAiApiKeyContextProvider } from '../contexts';
 import { Nav } from '../components/Nav';
+import { OpenAiApiKeyContextProvider } from '../contexts/OpenAiApiKeyContextProvider';
 
 export default function App({ Component, pageProps }: AppProps) {
   return (

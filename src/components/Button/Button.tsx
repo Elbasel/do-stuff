@@ -4,15 +4,17 @@ type Props = {
   children: React.ReactNode | string;
   type?: 'button' | 'submit' | 'reset';
   className?: string;
+  onClick?: () => void;
 };
 
 export const Button = ({
   children,
   type = 'button',
   className = '',
+  onClick = () => {},
 }: Props) => {
   return (
-    <button className={`${styles} ${className}`} type={type}>
+    <button className={`${styles} ${className}`} type={type} onClick={onClick}>
       {children}
     </button>
   );

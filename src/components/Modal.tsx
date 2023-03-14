@@ -31,12 +31,12 @@ export function Modal({
       >
         <Transition.Child
           as={'div'}
-          enter="transition ease-out duration-100"
-          enterFrom={'opacity-0 translate-y-4'}
+          enter="transition linear-ease duration-[300ms]"
+          enterFrom={'opacity-0 translate-y-[70vh]'}
           enterTo="opacity-100 translate-y-0"
-          leave="ease-in duration-200"
-          leaveFrom="opacity-100 translate-y-0"
-          leaveTo="opacity-0 translate-y-4"
+          leave="duration-[300ms] linear-ease"
+          leaveFrom="translate-y-0"
+          leaveTo=" translate-y-[100vh]"
         >
           {children}
         </Transition.Child>

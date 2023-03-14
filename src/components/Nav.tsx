@@ -10,7 +10,7 @@ export const Nav = (props: Props) => {
   const [modalOpen, setModalOpen] = useState(false);
 
   const handleModalOpen = () => {
-    console.log({ modalOpen });
+    // console.log({ modalOpen });
     setModalOpen(true);
   };
 
@@ -22,6 +22,7 @@ export const Nav = (props: Props) => {
             onClick={handleModalOpen}
             className="flex items-center gap-4"
             type="button"
+            style='outline'
           >
             Enter Api Key
           </Button>

@@ -42,8 +42,8 @@ export const HomeInput = ({ onSubmit }: Props) => {
       ref={parent}
       onClick={() => handleClick()}
       className={classNames(
-        'animate-background mt-8 rounded-lg h-[100px] w-[87vw] mx-auto max-w-lg flex items-center relative overflow-hidden bg-gradient-to-r from-green-400 via-green-500 to-green-300',
-        !promptVisible && 'ring-offset-green-600 ring-2'
+        'animate-background transition-all duration-300 mt-8 rounded-lg h-[100px] w-[87vw] mx-auto max-w-lg flex items-center relative overflow-hidden bg-gradient-to-r from-green-400 via-green-500 to-green-300',
+        !promptVisible && 'main-input-focused'
       )}
     >
       {/* fake-placeholder */}
@@ -58,7 +58,7 @@ export const HomeInput = ({ onSubmit }: Props) => {
         }}
         ref={mainInput}
         onBlur={handleBlur}
-        className={`${commonStyles} bg-zinc-800 border-0 resize-none`}
+        className={`${commonStyles} homeInput bg-zinc-800 border-0 resize-none`}
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
       />
@@ -67,4 +67,4 @@ export const HomeInput = ({ onSubmit }: Props) => {
 };
 
 const commonStyles =
-  'absolute h-full px-4 py-4 outline-none w-[99%] rounded-lg -left-[10px] -top-[10px] overflow-hidden';
+  'absolute linear h-full px-4 py-4 outline-none w-[99%] rounded-lg -left-[10px] -top-[10px] overflow-hidden';

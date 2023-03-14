@@ -5,7 +5,7 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head />
-      <body className="h-screen overflow-hidden w-screen">
+      <body>
         <Main />
         <NextScript />
       </body>

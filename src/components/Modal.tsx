@@ -1,6 +1,8 @@
 import { Transition, Dialog } from '@headlessui/react';
 import { Fragment } from 'react';
 import { classNames } from '../utils/classNames';
+import { cva } from 'class-variance-authority';
+import { twMerge } from 'tailwind-merge';
 
 type Props = {
   isOpen: boolean;
@@ -10,13 +12,11 @@ type Props = {
   fullscreen?: boolean;
 };
 
-const tailwindSafeList = 'y-[100vh] x-[100vw] y-[-100vw] x-[-100vh]';
-
 export function Modal({
   isOpen,
   onClose = () => {},
   children,
-  slideFrom,
+  slideFrom = 'bottom',
   fullscreen = true,
 }: Props) {
   return (

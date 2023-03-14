@@ -10,8 +10,8 @@ export const Nav = (props: Props) => {
   const [modalOpen, setModalOpen] = useState(false);
 
   const handleModalOpen = () => {
+    console.log({ modalOpen });
     setModalOpen(true);
-    console.log({ apiKeyModalOpen: modalOpen });
   };
 
   return (
@@ -23,7 +23,6 @@ export const Nav = (props: Props) => {
             className="flex items-center gap-4"
             type="button"
           >
-            <MdError className="text-red-600" />
             Enter Api Key
           </Button>
         </li>
@@ -33,7 +32,7 @@ export const Nav = (props: Props) => {
         onClose={() => setApiKeyModalOpen(false)}
       /> */}
       <Modal isOpen={modalOpen} slideFrom="bottom">
-        <ApiKeyForm fullscreen />
+        <ApiKeyForm fullscreen closeModal={() => setModalOpen(false)} />
       </Modal>
     </nav>
   );

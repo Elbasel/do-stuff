@@ -1,34 +1,58 @@
-import React from 'react';
+import { cva, type VariantProps } from 'class-variance-authority';
 import { twMerge } from 'tailwind-merge';
 
+const buttonVariants = cva(
+  [
+    [
+      'text-base',
+      'rounded-md',
+      'p-2',
+      'focus:outline-none',
+      'hover:bg-green-500',
+      'hover:cursor-pointer',
+      'hover:text-blue-900',
+      'active:scale-[0.95]',
+      'transition-all',
+    ],
+  ],
+  {
+    variants: {
+      style: {
+        default: [],
+        outline: ['border-2', 'border-green-500'],
+        solid: ['bg-green-500', 'text-white'],
+      },
+    },
+  }
+);
+
+export interface ButtonVariants extends VariantProps<typeof buttonVariants> {}
+
+export const buttonClassNames = (variants: ButtonVariants) =>
+  twMerge(buttonVariants(variants));
+
 type Props = {
-  children: React.ReactNode | string;
-  type?: 'button' | 'submit' | 'reset';
+  style?: 'outline' | 'solid' | 'default';
+  children?: React.ReactNode | string;
+  type?: 'button' | 'submit';
   className?: string;
   onClick?: () => void;
-  variant?: 'outline' | 'solid' | 'default';
 };
 
 export const Button = ({
-  children,
+  style = 'default',
+  children = 'button',
   type = 'button',
   className = '',
   onClick = () => {},
-  variant = 'default',
 }: Props) => {
-  const baseClasses =
-    'text-base rounded-md p-2 focus:outline-none hover:bg-green-500 hover:cursor-pointer hover:text-blue-900 active:scale-[0.95] transition-all';
-
-  const variantClasses = {
-    outline: 'border-2 border-green-500',
-    solid: 'bg-green-500 text-white',
-    default: 'border-2 border-gray-500',
-  };
-
-  const classes = twMerge(baseClasses, variantClasses[variant], className);
-
+  console.log(buttonClassNames);
   return (
-    <button className={classes} type={type} onClick={onClick}>
+    <button
+      onClick={onClick}
+      type={type}
+      className={`${buttonClassNames({ style })} ${className}`}
+    >
       {children}
     </button>
   );

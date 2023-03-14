@@ -3,20 +3,26 @@ import { classNames } from '../utils/classNames';
 import { Button } from './Button';
 import { Form } from './Form';
 import { Input } from './Input';
+import { SlClose } from 'react-icons/sl';
+import Layout from './Layout';
 
-type Props = { fullscreen: boolean };
+type Props = { fullscreen: boolean; closeModal: () => void };
 
-export const ApiKeyForm = ({ fullscreen }: Props) => {
+export const ApiKeyForm = ({ fullscreen, closeModal }: Props) => {
   return (
-    <div
+    <Layout
       className={classNames(
-        'bg-black text-white p-4',
+        'bg-black text-white',
         fullscreen && 'h-screen h-[100dvh] w-screen overflow-hidden'
       )}
     >
-      <Form onSubmit={() => {}} />
-      <Input />
-      <Button type="submit">Add Key</Button>
-    </div>
+      <Button
+        onClick={closeModal}
+        className="ml-auto text-red-600 w-fit hover:text-white"
+        style="outline"
+      >
+        <SlClose />
+      </Button>
+    </Layout>
   );
 };

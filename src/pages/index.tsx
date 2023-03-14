@@ -1,5 +1,5 @@
 import React from 'react';
-import {  HomeInput } from '../components/HomeInput';
+import { HomeInput } from '../components/HomeInput';
 import { HomeHeader } from '../components/HomeHeader';
 
 type Props = {};

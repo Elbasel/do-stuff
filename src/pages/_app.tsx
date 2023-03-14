@@ -1,11 +1,12 @@
 import React from 'react';
 import Head from 'next/head';
-import { Layout } from '../components/Layout';
 import type { AppProps } from 'next/app';
 
-import '../globals.css';
 import { Nav } from '../components/Nav';
 import { OpenAiApiKeyContextProvider } from '../contexts/OpenAiApiKeyContextProvider';
+import { Footer } from '../components/Footer';
+import Layout from '../components/Layout';
+import '../globals.css';
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -19,7 +20,10 @@ export default function App({ Component, pageProps }: AppProps) {
       <OpenAiApiKeyContextProvider>
         <Layout>
           <Nav />
-          <Component {...pageProps} />
+          <main>
+            <Component {...pageProps} />
+          </main>
+          <Footer />
         </Layout>
       </OpenAiApiKeyContextProvider>
     </>

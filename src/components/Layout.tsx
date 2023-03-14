@@ -1,11 +1,22 @@
 import React from 'react';
+import { classNames } from '../utils/classNames';
 
-type Props = { children: React.ReactNode };
+type Props = {
+  children: React.ReactNode;
+  className?: string;
+};
 
-export const Layout = ({ children }: Props) => {
+const Layout = ({ children, className = '' }: Props) => {
   return (
-    <main className="bg-zinc-900 text-green-400 h-[100vh] h-[100dvh] text-3xl py-8 px-2 overflow-hidden">
+    <div
+      className={classNames(
+        'flex flex-col h-screen p-2 overflow-hidden text-3xl text-green-400 bg-zinc-900',
+        className
+      )}
+    >
       {children}
-    </main>
+    </div>
   );
 };
+
+export default Layout;
